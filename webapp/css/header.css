@@ -1,0 +1,103 @@
+    body {
+        font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+        font-size: 15px;
+        color: #121212;
+        padding: 0;
+        margin: 0;
+        width: 99vw;
+    }
+    #ask-frame {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;!important;
+        z-index: 30;
+        top:0px;!important;
+    }
+    a {
+        text-decoration: none;
+        color: #121212;
+    }
+    header {
+        display: flex;
+        height: 51px;
+        min-width: 60vw;
+        align-items: center;
+        justify-content: space-around;
+        z-index: 1;
+    }
+    .rectangle {
+        bottom: 0;
+        width: 100%;
+        height: 4px;
+    }
+    .active {
+        background-color: #06f;
+    }
+    .ask-btn {
+        color: #fff;
+        background-color: #06f;
+        border-radius: 999px;
+        width: 70px;
+        line-height: 30px;
+        text-align: center;
+        border: 1px solid #06f;
+        outline: none;!important;
+        cursor: pointer;
+        letter-spacing: normal;
+        word-spacing: normal;
+        font-size: 14px;
+    }
+    .tabs-item {
+        padding: 0 12px 0 12px;
+        height: 100%;
+    }
+    .tabs-link{
+        line-height: 47px;
+        color: #8590a6;
+    }
+    .act {
+        font-weight: 600;
+        color: black;
+    }
+    /*.search-bar {*/
+    /*    min-width: 300px;*/
+    /*    width: auto;*/
+    /*    max-width: 400px;*/
+    /*}*/
+    .tabs {
+        min-width: 260px;
+    }
+    .menu-item {
+        padding: 5px 20px;
+        text-align: left;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    .menu-item:hover {
+        background: lightgray;
+    }
+    #profile-menu {
+        position: absolute;
+        width: 120px;
+        color: #8590a6;
+        left: -43px;
+    }
+    .menu {
+        background: white;
+        width: 120px;
+        height: 155px;
+        padding: 6px 0 6px 0;
+        border-radius: 3px;
+    }
+    .tri {
+        height: 0;
+        width: 10px;
+        border-width:5px 5px 8px 8px;
+        border-style: solid;
+        border-color:transparent transparent #fff transparent
+    }
+    .shadow {
+        box-shadow: 0 1px 3px 0 #D1D5DB;
+    }

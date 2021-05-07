@@ -1,0 +1,134 @@
+.title{
+    margin-top: 12px;
+    margin-bottom: 4px;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 32px;
+}
+.avatar {
+    width: 38px;!important;
+    height: 38px;!important;
+}
+.ques-container {
+}
+.username {
+    margin-left: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.school {
+    margin-left: 14px;
+    font-size: 15px;
+    color: #646464;
+}
+.answers {
+    margin-top: 3px;
+    background: rgb(246,246,246);
+    width: 100vw;
+    box-shadow: 0 1px 3px 0 #D1D5DB;
+    min-height: 83.5vh;
+}
+.write_ans {
+    color: #06f;
+    padding: 0 16px;
+    font-size: 14px;
+    line-height: 32px;
+    text-align: center;
+    cursor: pointer;
+    background: none;
+    border: 1px solid #06f;
+    border-radius: 3px;
+    margin-top: 10px;
+    width: 120px;
+}
+.write_ans:hover {
+    background: rgba(0,102,255,.1);
+}
+.answer {
+    background: #fff;
+    margin: 15px 0 5px;
+    border-radius: 2%;
+    position: relative;
+}
+.a-wrp {
+    width: 667px;
+    margin: 20px;
+}
+.wrp {
+    width: 667px;
+}
+.question{
+    padding: 16px 0 18px 0;
+    background: #fff;
+    box-shadow: 0 1px 3px 0 #D1D5DB;
+    width: 100vw;
+    margin-top: 1px;
+}
+.content {
+    line-height: 1.67;
+    margin-top: 9px;
+    margin-bottom: -4px;
+}
+.brief {
+    word-break: break-word;
+    line-height: 1.6;
+}
+#end {
+    margin-top: 10px;
+    color: #646464;
+    font-size: 18px;
+}
+#ans-content {
+    font-size: 15px;
+    word-break: break-word;
+    line-height: 1.6;
+    user-select: text;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    margin: 10px 0 10px 1.4em;
+    width: 667px;
+    outline: none;
+    min-height: 191px;
+}
+.good {
+    width: 120px;
+    margin-top: 10px;
+    background: rgba(0,102,255,.1);
+    padding: 0 10px;
+    color: #06f;
+    font-size: 14px;
+    line-height: 32px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 3px;
+}
+.time {
+    line-height: 1.67;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #8590a6;
+    cursor: pointer;
+}
+#close {
+    color: #0066ff;
+    position: absolute;
+    top:5px;
+    right: 5px;
+}
+.ans-wrp {
+    width: 707px;
+}
+.sendAns {
+    background: #06f;
+    color: white;
+    padding: 0 16px;
+    font-size: 14px;
+    line-height: 32px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid;
+    border-radius: 3px;
+    margin: 5px 0 15px 20px;
+    width: 120px;
+}

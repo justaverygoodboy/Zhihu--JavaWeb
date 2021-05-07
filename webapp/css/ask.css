@@ -1,0 +1,72 @@
+.q-body {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    overflow: hidden;
+    background: rgba(190,190,190,0.6);
+    z-index: 30;
+    position: absolute;
+    top:0;
+}
+#ask-form {
+    width: 512px;
+    height: 332px;
+    margin: 24px;!important;
+}
+.form-wrapper {
+    background: #fff;
+    width: 560px;
+    height: 380px;
+}
+#post {
+    color: #fff;
+    background-color: #06f;
+    line-height: 32px;
+    cursor: pointer;
+    outline: none;
+    font-size: 14px;
+    border-radius: 3px;
+    border: 1px solid #06f;
+    width: 94px;
+    height: 40px;
+    margin-left: 350px;
+}
+
+.title {
+    width: 488px;
+    height: 50px;
+    margin-bottom: 16px;
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+#title-input {
+    width: 95%;
+    height: 95%;
+    outline: none;
+}
+#discription{
+    width: 488px;
+    height: 185px;
+    margin-bottom: 16px;
+    word-break: break-word;
+    line-height: 1.6;
+    user-select: text;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    background: #fff;
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
+    box-sizing: border-box;
+    transition: background .2s,border .2s;
+    outline: none;
+}
+#close {
+    position: absolute;
+    right: -60px;
+    top: -5px;
+    outline: none;
+    color: #fff;
+}
