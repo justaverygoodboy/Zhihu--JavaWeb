@@ -7,7 +7,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 public class Rs2Json {
-    public String resultSetToJson(ResultSet rs) throws SQLException, UnsupportedEncodingException, JSONException {
+    public static String resultSetToJson(ResultSet rs) throws SQLException, UnsupportedEncodingException, JSONException {
         JSONArray array = new JSONArray();
         // 获取列数
         ResultSetMetaData metaData = rs.getMetaData();

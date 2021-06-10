@@ -12,8 +12,6 @@ public class TokenSignVery {
     private static final String TOKEN_SECRET = "privateKey";
     /**
      * 生成签名，60分钟过期
-     * @param **username**
-     * @param **password**
      * @return
      */
     public static String sign(String userId) {
