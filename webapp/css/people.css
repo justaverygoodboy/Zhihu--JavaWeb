@@ -1,0 +1,20 @@
+.people-container{
+    width: 60vw;
+    background: white;
+}
+.big-avatar {
+    width: 160px;
+    height: 160px;
+}
+.people-name {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 30px;
+}
+.people-school {
+    font-size: 14px;
+    line-height: 20px
+}
+.info-container {
+    height: 170px;
+}

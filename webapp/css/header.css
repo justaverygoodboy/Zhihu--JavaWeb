@@ -1,10 +1,5 @@
-    body {
-        font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
-        font-size: 15px;
-        color: #121212;
-        padding: 0;
-        margin: 0;
-        width: 99vw;
+    .my-header {
+        background: white;
     }
     #ask-frame {
         width: 100vw;
@@ -29,8 +24,9 @@
         bottom: 0;
         width: 100%;
         height: 4px;
+        background-color: transparent;
     }
-    .active {
+    .router-link-active>.rectangle{
         background-color: #06f;
     }
     .ask-btn {
@@ -54,16 +50,12 @@
     .tabs-link{
         line-height: 47px;
         color: #8590a6;
+        font-weight: 500;
     }
-    .act {
+    .router-link-active>.tabs-link{
         font-weight: 600;
         color: black;
     }
-    /*.search-bar {*/
-    /*    min-width: 300px;*/
-    /*    width: auto;*/
-    /*    max-width: 400px;*/
-    /*}*/
     .tabs {
         min-width: 260px;
     }

@@ -1,95 +1,108 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
   <script src="js/vue.js"></script>
+  <script src="https://cdn.bootcss.com/vuex/3.0.1/vuex.min.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
   <script src="js/axios.min.js"></script>
   <link href="css/tailwind.min.css" rel="stylesheet">
+  <link href="css/index.css" rel="stylesheet">
+  <link href="css/header.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  <link href="css/ask.css" rel="stylesheet">
+  <link href="css/question.css" rel="stylesheet">
+  <link href="css/people.css" rel="stylesheet">
   <title>逼乎</title>
 </head>
 <body>
-<div id="app">
-  <jsp:include page="components/homepage/header.jsp" flush="true" />
-  <jsp:include page="components/homepage/main.jsp" flush="true"/>
+<div id="app" class="flex flex-col items-center">
+  <my-header></my-header>
+  <router-view></router-view>
 </div>
 </body>
-<script>
-  var vue = new Vue({
-      el:'#app',
-      data: {
+<script type="module">
+  import {myHeader} from './components/homepage/myHeader.js'
+  import {myQuestions} from "./components/homepage/myQuestions.js";
+  import {routes} from "./router/router.js";
+  const router = new VueRouter({
+      routes
+  })
+  const store = new Vuex.Store({
+      state:{
           questions: [],
           token: '',
           user: {},
-          menuShow: false,
-          quesTitle: '',
-          quesDiscrip: '',
-          ques: false,
+          askQues: false,
+          noRes: false,
+          backupQues: []
+      },
+      mutations: {
+          updateQues(state,ques){
+              state.questions = ques
+          },
+          updateToken(state,token){
+              state.token = token
+          },
+          updateUser(state,user){
+              state.user = user
+          },
+          updateAskQues(state,val){
+              state.askQues = val
+          },
+          setResState(state,val){
+              state.noRes = val
+          },
+          setBackQues(state,ques){
+              state.backupQues = ques
+          },
+          updateUserAvatar(state,avatar){
+              state.user.avatar = avatar;
+          }
+      },
+      actions: {
+          saveQues(context){
+              axios.get('questions').then(res=>{
+                context.commit('updateQues',res.data)
+              })
+          }
+      }
+  })
+  var vue = new Vue({
+      el:'#app',
+      router,
+      store: store,
+      components: {
+          myHeader,
+          myQuestions,
       },
       methods:{
           getQues(){
-              axios.get('questions').then((res)=>{
-                  this.questions = res.data
-                  console.log(res)
-              })
+              this.$store.dispatch('saveQues')
           },
           getToken(){
               let token = window.localStorage.getItem("token")
-              this.token = token
-              if(token == null){
-                  location.href="${pageContext.request.contextPath}/login.jsp";
+              console.log(token)
+              if(token === undefined){
+                  window.localStorage.clear();
+                  location.href="${pageContext.request.contextPath}/login.jsp"
               }
+              else
+                  this.$store.commit('updateToken',token)
           },
           getUser(){
               axios.get('user',{
                   headers:{
-                      'Authorization':this.token
+                      'Authorization':this.$store.state.token
                   }}).then((res)=>{
-                  this.user=res.data
-                  window.localStorage.setItem("avatar",res.data.avatar)
-                  console.log(window.localStorage.getItem("avatar"))
-              })
-          },
-          showMenu(){
-            this.menuShow = true
-          },
-          closeMenu(){
-            this.menuShow = false
-          },
-          ask(){
-            this.ques = true
-          },
-          postQues(){
-              let title = this.quesTitle
-              let discrip = this.quesDiscrip
-              if (title !== ''){
-                  let token = this.token
-                  axios.post('postAsk',{
-                      title:title,
-                      brief:discrip
-                      },{
-                      headers: {
-                        'Authorization':token
-                      }}).then((res)=>{
-                      if(res.data.success){
-                          this.getQues()
-                      }else{
-                          console.log("发布失败！")
+                      if(res.data.valid=="fail"){
+                          location.href="${pageContext.request.contextPath}/login.jsp"
                       }
-                  })
-              }else{
-                  alert("标题不能为空")
-              }
-              this.closeQues()
-          },
-          closeQues(){
-            this.ques = false
-          },
-          toQues(id){
-              location.href="${pageContext.request.contextPath}/question.jsp?quesId="+id.toString();
-          },
-          logout(){
-              window.localStorage.clear();
-              location.href="${pageContext.request.contextPath}/login.jsp";
+                      else{
+                          this.$store.commit('updateUser',res.data)
+                      }
+              })
           }
       },
       mounted:function () {

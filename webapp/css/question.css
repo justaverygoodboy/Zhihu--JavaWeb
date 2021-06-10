@@ -1,4 +1,4 @@
-.title{
+.title {
     margin-top: 12px;
     margin-bottom: 4px;
     font-size: 22px;
@@ -131,4 +131,10 @@
     border-radius: 3px;
     margin: 5px 0 15px 20px;
     width: 120px;
+}
+.search-warning {
+    font-size: 16px;
+    text-align: center;
+    color: #999;
+    white-space: pre-line;
 }

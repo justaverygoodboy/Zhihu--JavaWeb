@@ -1,8 +1,6 @@
-/*main*/
 main {
     margin-top: 3px;
     width: 100vw;
-    background: rgb(246,246,246);
 }
 .main-content {
     margin-top: 8px;
@@ -40,10 +38,28 @@ main {
     text-overflow:ellipsis;
     cursor: pointer;
     height: 63px;!important;
+    max-height: 63px;!important;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
 }
 .ques-brief:hover {
     color: #9CA3AF;
+}
+.search-warning {
+    background: transparent;
+    font-size: 300px;
+    text-align: center;
+    color: #999;
+    white-space: pre-line;
+}
+.back-search {
+    margin-top: 24px;
+    padding: 0 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #06f;
+    border-radius: 6px;
+    border: .5px solid hsla(0,0%,60%,.08);
+    background-color: hsla(0,0%,60%,.08);
 }
