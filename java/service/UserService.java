@@ -1,7 +1,5 @@
 package service;
 
-import java.security.NoSuchAlgorithmException;
-
 public interface UserService {
     public boolean verifyUser(String token);
     public String signUser(String username,String password);

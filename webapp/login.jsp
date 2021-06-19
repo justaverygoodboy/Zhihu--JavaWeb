@@ -35,6 +35,10 @@
           <input ref="password" type="password" id="password" placeholder="密码">
           <span class="alert" id="pd-alert"></span>
         </div>
+        <div class="InputFlow">
+          <input id="verify" placeholder="验证码">
+          <span class="alert" id="v-alert"></span>
+          <img id="verify-code" onclick="refresh()" src="http://localhost:8888/bihu_war_exploded/imageCode"></div>
         <div class="login-option"></div>
         <button id="login-btn" onclick="login()">
           登录
@@ -79,7 +83,6 @@
 <script>
   window.onload = ()=>{
       let token = window.localStorage.getItem("token")
-      console.log(token)
       if(token!==undefined||token!==null){
         axios.get('login',{
             headers:{Authorization:token}
@@ -90,6 +93,10 @@
             }
         })
       }
+  }
+  function refresh(){
+      let verifyCode = document.getElementById("verify-code")
+      verifyCode.src = "http://localhost:8888/bihu_war_exploded/imageCode?"+new Date()
   }
   function alertInfo(alertEle,info) {
       alertEle.innerText = info
@@ -178,18 +185,27 @@
   function login() {
       let un = document.getElementById("user")
       let pd = document.getElementById("password")
+      let verify = document.getElementById("verify")
       let unalert = document.getElementById("un-alert")
       let pdalert = document.getElementById("pd-alert")
+      let valert = document.getElementById("v-alert")
       if (un.value === '') {
         alertInfo(unalert,'用户名为空')
       }else if (pd.value === '') {
         alertInfo(pdalert,'密码为空')
+      }else if (verify.value === ''){
+        alertInfo(valert,'验证码为空')
       }else {
         let password = md5(pd.value)
         axios.post('login',{
             user:un.value,
-            password:password
+            password:password,
+            verify:verify.value,
           }).then((res)=>{
+            if (res.data.state === 'e'){
+                alertInfo(valert,'验证码错误')
+                return
+            }
             let token = res.data.token
             window.localStorage.setItem("token",token)
             axios.get('login',{

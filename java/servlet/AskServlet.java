@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
+import service.QuestionsService;
 import service.impl.QuestionsServiceImpl;
 import utils.Req2Json;
 @WebServlet("/postAsk")
@@ -16,7 +17,7 @@ public class AskServlet extends HttpServlet {
     private String brief = "";
     private String token = "";
     private int state = 0;
-    private QuestionsServiceImpl questionsService = new QuestionsServiceImpl();
+    private QuestionsService questionsService = new QuestionsServiceImpl();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
         String param = Req2Json.Req2Json(req);

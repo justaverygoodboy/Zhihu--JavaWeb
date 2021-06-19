@@ -9,13 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import service.QuestionsService;
 import service.impl.QuestionsServiceImpl;
 import utils.Req2Json;
 
 @WebServlet("/detail")
 public class DetailServlet extends HttpServlet {
     private String quesId = "";
-    private QuestionsServiceImpl questionsService = new QuestionsServiceImpl();
+    private QuestionsService questionsService = new QuestionsServiceImpl();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
         String param = Req2Json.Req2Json(req);

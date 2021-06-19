@@ -40,7 +40,7 @@ export const questionDetail = {
         '          {{ans.content}}\n' +
         '        </div>\n' +
         '        <div class="time">发布于 {{ans.timestamp}}</div>\n' +
-        '        <div class="good">赞同 {{ans.good}}</div>\n' +
+        '        <div class="good" @click="goodLike(ans.answerId,index)">赞同 {{ans.good}}</div>\n' +
         '      </div>\n' +
         '    </div>\n' +
         '    <div id="end">没有更多回答了</div>\n' +
@@ -89,12 +89,35 @@ export const questionDetail = {
                         this.write = false
                         this.getDetail()
                     }else if(res.data.success==-1){
-                        console.log('回答失败')
+                        window.alert('回答失败')
                     }else{
                         location.href="/bihu_war_exploded/login.jsp";
                     }
                 })
             }
+        },
+        goodLike:function(answerId,index){
+            axios.post('like',{
+                answerId:answerId,
+                userId:this.$store.state.user.userId
+            }).then((res)=>{
+                if(res.data.success === 1){
+                    let value = this.answers[index].good
+                    if(typeof(value)==="string"){
+                        value = parseInt(value)
+                    }
+                    value += 1
+                    this.answers[index].good=value
+                }else if(res.data.success === -1) {
+                    let value = this.answers[index].good
+                    if(typeof(value)==="string"){
+                        value = parseInt(value)
+                    }
+                    value -= 1
+                    this.answers[index].good=value
+                }else
+                    window.alert('服务器发生错误')
+            })
         },
     },
     mounted:function () {

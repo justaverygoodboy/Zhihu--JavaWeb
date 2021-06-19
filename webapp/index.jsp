@@ -14,6 +14,7 @@
   <link href="css/ask.css" rel="stylesheet">
   <link href="css/question.css" rel="stylesheet">
   <link href="css/people.css" rel="stylesheet">
+  <link href="css/goodAnswers.css" rel="stylesheet">
   <title>逼乎</title>
 </head>
 <body>
@@ -24,7 +25,6 @@
 </body>
 <script type="module">
   import {myHeader} from './components/homepage/myHeader.js'
-  import {myQuestions} from "./components/homepage/myQuestions.js";
   import {routes} from "./router/router.js";
   const router = new VueRouter({
       routes
@@ -75,7 +75,6 @@
       store: store,
       components: {
           myHeader,
-          myQuestions,
       },
       methods:{
           getQues(){
@@ -83,7 +82,6 @@
           },
           getToken(){
               let token = window.localStorage.getItem("token")
-              console.log(token)
               if(token === undefined){
                   window.localStorage.clear();
                   location.href="${pageContext.request.contextPath}/login.jsp"

@@ -1,5 +1,6 @@
 package service.impl;
 
+import dao.UsersDao;
 import dao.impl.UsersDaoImpl;
 import service.UserService;
 import utils.Md5Util;
@@ -10,7 +11,7 @@ public class UserServiceImpl implements UserService {
     private String userId="";
     private int state = 0;
     private String rs = "";
-    private UsersDaoImpl usersDao = new UsersDaoImpl();
+    private UsersDao usersDao = new UsersDaoImpl();
     @Override
     public boolean verifyUser(String token) {
         String userVerify = TokenSignVery.verify(token);

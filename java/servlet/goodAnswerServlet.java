@@ -2,8 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,22 +11,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import service.AnswerService;
 import service.impl.AnswerServiceImpl;
-import utils.Req2Json;
 
-@WebServlet("/write")
-public class WriteServlet extends HttpServlet {
-    private int state = 0;
-    private String quesId = "";
-    private String content = "";
+import utils.Req2Json;
+@WebServlet("/goodAnswers")
+public class goodAnswerServlet extends HttpServlet {
+    private String userId = "";
+    private String res = "";
     private AnswerService answerService = new AnswerServiceImpl();
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
         String param = Req2Json.Req2Json(req);
-        String token = req.getHeader("Authorization");
         try {
             JSONObject jsonObj = new JSONObject(param);
-            quesId = jsonObj.getString("quesId");
-            content = jsonObj.getString("content");
+            userId = jsonObj.getString("userId");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -36,11 +31,12 @@ public class WriteServlet extends HttpServlet {
         resp.setContentType("application/json;charset=utf-8");
         PrintWriter out = resp.getWriter();
         try {
-            state = answerService.writeAnswer(token,quesId,content);
+            res = answerService.getGoodAnswer(userId);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        out.write("{\"success\":"+state+"}");
+        res = (res.equals(""))?"{\"data\":0}":"{\"data\":"+res+"}";
+        out.write(res);
     }
 }
 

@@ -1,5 +1,6 @@
 package service.impl;
 
+import dao.QuestionsDao;
 import dao.impl.QuestionsDaoImpl;
 import service.QuestionsService;
 import utils.TokenSignVery;
@@ -11,7 +12,7 @@ public class QuestionsServiceImpl implements QuestionsService {
     private String questions = "";
     private String quesInfo = "";
     private int state = 0;
-    private QuestionsDaoImpl quesDao = new QuestionsDaoImpl();
+    private QuestionsDao quesDao = new QuestionsDaoImpl();
     @Override
     public String getQuestions() {
         try {

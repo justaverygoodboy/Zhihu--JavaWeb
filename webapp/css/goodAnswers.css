@@ -1,0 +1,24 @@
+.good-answers {
+    margin-left: 20px;
+}
+.good-answer-answer {
+    font-size: 15px;
+    color: #121212;
+}
+.divide-border {
+    height: 2px;
+    background: rgb(246,246,246);
+    width: 95%;
+}
+#ans-avatar {
+    width: 38px;
+    height: 38px;
+}
+.ans-content {
+    width: 95%;
+    margin: 0;
+    max-height: 63px;
+}
+.good-ans-title {
+    width: 95%;
+}

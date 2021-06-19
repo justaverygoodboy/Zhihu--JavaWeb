@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import org.json.JSONException;
 import org.json.JSONObject;
+import service.QuestionsService;
 import service.impl.QuestionsServiceImpl;
 import utils.Req2Json;
 
@@ -15,7 +16,7 @@ import utils.Req2Json;
 public class SearchServlet extends HttpServlet {
     private String content = "";
     private String res = "";
-    private QuestionsServiceImpl questionsService = new QuestionsServiceImpl();
+    private QuestionsService questionsService = new QuestionsServiceImpl();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
         String param = Req2Json.Req2Json(req);

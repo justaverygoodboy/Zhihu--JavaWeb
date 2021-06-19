@@ -42,6 +42,14 @@
     font-weight: 600!important;
     color: #121212!important;
 }
+#verify {
+    width: 250px;
+}
+#verify-code {
+    cursor: pointer;
+    width: 100px;
+    height: 35px;
+}
 .way-choose {
     font-size: 16px;
     line-height: 60px;
@@ -116,4 +124,7 @@ footer {
     right: 2px;
     opacity: 0;
     transition: all 0.3s;
+}
+#v-alert {
+    right: 108px;
 }

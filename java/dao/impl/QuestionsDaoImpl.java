@@ -63,7 +63,7 @@ public class QuestionsDaoImpl implements QuestionsDao {
     @Override
     public ArrayList getQuestionDetail(String quesId) throws Exception {
         Connection conn = JdbcUtils.getConn();
-        String sql1 = "select username,school,avatar,content,good,timestamp from answers a join users u on a.userId=u.userId and a.quesId = "+quesId+" order by good,timestamp desc";
+        String sql1 = "select answerId,username,school,avatar,content,good,timestamp from answers a join users u on a.userId=u.userId and a.quesId = "+quesId+" order by good,timestamp desc";
         String sql2 = "select title,brief from questions where quesId = "+quesId;
         PreparedStatement statement = conn.prepareStatement(sql1);
         ResultSet rs = statement.executeQuery();

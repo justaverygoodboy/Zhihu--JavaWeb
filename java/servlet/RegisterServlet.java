@@ -6,6 +6,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import service.UserService;
 import service.impl.UserServiceImpl;
 import org.json.*;
 import utils.Req2Json;
@@ -19,7 +21,7 @@ public class RegisterServlet extends HttpServlet {
     private String email = "";
     private String phone = "";
     private String school = "";
-    private UserServiceImpl userService = new UserServiceImpl();
+    private UserService userService = new UserServiceImpl();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
         String param = Req2Json.Req2Json(req);

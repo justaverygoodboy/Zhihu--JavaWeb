@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
+import service.UserService;
 import service.impl.UserServiceImpl;
 import utils.Req2Json;
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class UploadServlet extends HttpServlet {
     private String avatar = "";
     private String res = "";
     private int state = 0;
-    private UserServiceImpl userService = new UserServiceImpl();
+    private UserService userService = new UserServiceImpl();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String param = Req2Json.Req2Json(req);

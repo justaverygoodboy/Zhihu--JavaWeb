@@ -16,15 +16,9 @@ public class UsersDaoImpl implements UsersDao {
     public String getUserById(String userId) throws Exception {
         String user = "";
         Connection conn = JdbcUtils.getConn();
-        try {
-            String sql = "select userId,username,school,avatar from users where userId="+userId;
-            ResultSet rs = JdbcUtils.getQueryRs(conn,sql);
-            user = Rs2Json.resultSetToJson(rs);
-        } catch (ClassNotFoundException | SQLException | UnsupportedEncodingException | JSONException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String sql = "select userId,username,school,avatar from users where userId="+userId;
+        ResultSet rs = JdbcUtils.getQueryRs(conn,sql);
+        user = Rs2Json.resultSetToJson(rs);
         JdbcUtils.close(conn);
         int len = user.length();
         return user.substring(1,len-1);
